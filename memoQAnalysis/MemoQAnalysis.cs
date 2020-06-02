@@ -328,6 +328,14 @@ namespace memoQAnalysis
         }
 
         [Index(89)]
-        public int TotalReserved3 { get; set; }
+        public int TotalReserved3 {
+            get
+            {
+                var total = XtranslatedReserved3 + HundredOneReserved3 + RepetitionsReserved3 + HundredReserved3 +
+                            NinentyFiveNineReserved3 + EightyFiveNinentyFourReserved3 + SeventyFiveEightyFourReserved3 +
+                            FiftySeventyFourReserved3 + NoMatchReserved3 + FragmentsReserved3;
+                return total;
+            }
+        }
     }
 }
