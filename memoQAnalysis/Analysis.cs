@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
 
@@ -11,6 +12,7 @@ namespace memoQAnalysis
     public class Analysis
     {
         public List<MemoQAnalysis> Data { get; }
+        public Encoding OutputEncoding = Encoding.Unicode;
 
         private readonly string _delimiter;
 
@@ -98,7 +100,7 @@ namespace memoQAnalysis
             };
             configuration.RegisterClassMap<MemoQAnalysisMapping>();
 
-            using (var sw = new StreamWriter(path))
+            using (var sw = new StreamWriter(path, false, OutputEncoding))
             using (var csv = new CsvWriter(sw, configuration))
             {
                 csv.WriteRecords(Data);
