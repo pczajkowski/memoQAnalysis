@@ -89,5 +89,19 @@ namespace memoQAnalysis
 
             return total;
         }
+
+        public void Save(string path)
+        {
+            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = _delimiter
+            };
+
+            using (var sw = new StreamWriter(path))
+            using (var csv = new CsvWriter(sw, configuration))
+            {
+                csv.WriteRecords(Data);
+            }
+        }
     }
 }

@@ -52,5 +52,16 @@ namespace memoQAnalysisTests
             var test = new Analysis(data);
             Assert.Equal(3, test.Data.Count);
         }
+
+        [Fact]
+        public void SaveFile()
+        {
+            var test = new Analysis(MainTestFile);
+            Assert.Equal(3, test.Data.Count);
+
+            var path = "testSave.csv";
+            test.Save(path);
+            File.Delete(path);
+        }
     }
 }
