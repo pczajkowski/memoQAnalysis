@@ -100,6 +100,21 @@ namespace memoQAnalysisTests
         }
 
         [Fact]
+        public void TotalAsianCharacters()
+        {
+            var test = new Analysis(MainTestFile);
+            var total = test.Data.Sum(x => x.TotalAsianCharacters);
+
+            var originalFirstFile = test.Data.FirstOrDefault();
+            Assert.NotNull(originalFirstFile);
+            originalFirstFile.HundredAsianCharacters += 1050;
+
+            var expectedTotal = total + 1050;
+            var newTotal = test.Data.Sum(x => x.TotalAsianCharacters);
+            Assert.Equal(expectedTotal, newTotal);
+        }
+
+        [Fact]
         public void ReadModifySaveCheck()
         {
             var test = new Analysis(MainTestFile);
