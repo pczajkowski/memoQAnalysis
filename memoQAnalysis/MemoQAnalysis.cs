@@ -295,7 +295,15 @@ namespace memoQAnalysis
         }
 
         [Index(86)]
-        public int TotalTags { get; set; }
+        public int TotalTags {
+            get
+            {
+                var total = XtranslatedTags + HundredOneTags + RepetitionsTags + HundredTags +
+                            NinentyFiveNineTags + EightyFiveNinentyFourTags + SeventyFiveEightyFourTags +
+                            FiftySeventyFourTags + NoMatchTags + FragmentsTags;
+                return total;
+            }
+        }
 
         [Index(87)]
         public int TotalReserved1 { get; set; }
