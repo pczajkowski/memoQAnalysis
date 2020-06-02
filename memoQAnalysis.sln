@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "memoQAnalysis", "memoQAnalysis\memoQAnalysis.csproj", "{BF7DEBB1-7B29-46A8-9D7B-A3E75921CAC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "memoQAnalysisTests", "memoQAnalysisTests\memoQAnalysisTests.csproj", "{BE5BB184-C3EC-47DA-9CCC-73897B347BE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF7DEBB1-7B29-46A8-9D7B-A3E75921CAC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7DEBB1-7B29-46A8-9D7B-A3E75921CAC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7DEBB1-7B29-46A8-9D7B-A3E75921CAC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7DEBB1-7B29-46A8-9D7B-A3E75921CAC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE5BB184-C3EC-47DA-9CCC-73897B347BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5BB184-C3EC-47DA-9CCC-73897B347BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5BB184-C3EC-47DA-9CCC-73897B347BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5BB184-C3EC-47DA-9CCC-73897B347BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9C155C1-A958-4459-BF88-BE0037EBD1A5}
+	EndGlobalSection
+EndGlobal
