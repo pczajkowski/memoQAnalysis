@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using memoQAnalysis;
 using Xunit;
 
@@ -54,13 +55,21 @@ namespace memoQAnalysisTests
         }
 
         [Fact]
-        public void SaveFile()
+        public void ReadModifySaveCheck()
         {
             var test = new Analysis(MainTestFile);
-            Assert.Equal(3, test.Data.Count);
+            var originalFirstFile = test.Data.FirstOrDefault();
+            Assert.NotNull(originalFirstFile);
+            originalFirstFile.NinentyFiveNineWords = 1050;
 
             var path = "testSave.csv";
             test.Save(path);
+
+            var readTest = new Analysis(path);
+            var readFirstFile = readTest.Data.FirstOrDefault();
+            Assert.NotNull(readFirstFile);
+            Assert.Equal(originalFirstFile.NinentyFiveNineWords, readFirstFile.NinentyFiveNineWords);
+
             File.Delete(path);
         }
     }

@@ -96,6 +96,7 @@ namespace memoQAnalysis
             {
                 Delimiter = _delimiter
             };
+            configuration.RegisterClassMap<MemoQAnalysisMapping>();
 
             using (var sw = new StreamWriter(path))
             using (var csv = new CsvWriter(sw, configuration))
