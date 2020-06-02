@@ -85,6 +85,21 @@ namespace memoQAnalysisTests
         }
 
         [Fact]
+        public void TotalCharacters()
+        {
+            var test = new Analysis(MainTestFile);
+            var total = test.Data.Sum(x => x.TotalCharacters);
+
+            var originalFirstFile = test.Data.FirstOrDefault();
+            Assert.NotNull(originalFirstFile);
+            originalFirstFile.RepetitionsCharacters += 1050;
+
+            var expectedTotal = total + 1050;
+            var newTotal = test.Data.Sum(x => x.TotalCharacters);
+            Assert.Equal(expectedTotal, newTotal);
+        }
+
+        [Fact]
         public void ReadModifySaveCheck()
         {
             var test = new Analysis(MainTestFile);

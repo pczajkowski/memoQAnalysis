@@ -273,7 +273,15 @@ namespace memoQAnalysis
         }
 
         [Index(84)]
-        public int TotalCharacters { get; set; }
+        public int TotalCharacters {
+            get
+            {
+                var total = XtranslatedCharacters + HundredOneCharacters + RepetitionsCharacters + HundredCharacters +
+                            NinentyFiveNineCharacters + EightyFiveNinentyFourCharacters + SeventyFiveEightyFourCharacters +
+                            FiftySeventyFourCharacters + NoMatchCharacters + FragmentsCharacters;
+                return total;
+            }
+        }
 
         [Index(85)]
         public int TotalAsianCharacters { get; set; }
