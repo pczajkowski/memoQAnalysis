@@ -130,6 +130,21 @@ namespace memoQAnalysisTests
         }
 
         [Fact]
+        public void TotalReserved1()
+        {
+            var test = new Analysis(MainTestFile);
+            var total = test.Data.Sum(x => x.TotalReserved1);
+
+            var originalFirstFile = test.Data.FirstOrDefault();
+            Assert.NotNull(originalFirstFile);
+            originalFirstFile.NoMatchReserved1 += 1050;
+
+            var expectedTotal = total + 1050;
+            var newTotal = test.Data.Sum(x => x.TotalReserved1);
+            Assert.Equal(expectedTotal, newTotal);
+        }
+
+        [Fact]
         public void ReadModifySaveCheck()
         {
             var test = new Analysis(MainTestFile);

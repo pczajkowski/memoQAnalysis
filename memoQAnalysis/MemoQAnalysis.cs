@@ -306,7 +306,15 @@ namespace memoQAnalysis
         }
 
         [Index(87)]
-        public int TotalReserved1 { get; set; }
+        public int TotalReserved1 {
+            get
+            {
+                var total = XtranslatedReserved1 + HundredOneReserved1 + RepetitionsReserved1 + HundredReserved1 +
+                            NinentyFiveNineReserved1 + EightyFiveNinentyFourReserved1 + SeventyFiveEightyFourReserved1 +
+                            FiftySeventyFourReserved1 + NoMatchReserved1 + FragmentsReserved1;
+                return total;
+            }
+        }
 
         [Index(88)]
         public int TotalReserved2 { get; set; }
