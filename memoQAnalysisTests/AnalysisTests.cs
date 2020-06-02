@@ -70,6 +70,21 @@ namespace memoQAnalysisTests
         }
 
         [Fact]
+        public void TotalSegments()
+        {
+            var test = new Analysis(MainTestFile);
+            var total = test.Data.Sum(x => x.TotalSegments);
+
+            var originalFirstFile = test.Data.FirstOrDefault();
+            Assert.NotNull(originalFirstFile);
+            originalFirstFile.FiftySeventyFourSegments += 1050;
+
+            var expectedTotal = total + 1050;
+            var newTotal = test.Data.Sum(x => x.TotalSegments);
+            Assert.Equal(expectedTotal, newTotal);
+        }
+
+        [Fact]
         public void ReadModifySaveCheck()
         {
             var test = new Analysis(MainTestFile);

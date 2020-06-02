@@ -251,7 +251,15 @@ namespace memoQAnalysis
         public int FragmentsReserved3 { get; set; }
 
         [Index(82)]
-        public int TotalSegments { get; set; }
+        public int TotalSegments {
+            get
+            {
+                var total = XtranslatedSegments + HundredOneSegments + RepetitionsSegments + HundredSegments +
+                            NinentyFiveNineSegments + EightyFiveNinentyFourSegments + SeventyFiveEightyFourSegments +
+                            FiftySeventyFourSegments + NoMatchSegments + FragmentsSegments;
+                return total;
+            }
+        }
 
         [Index(83)]
         public int TotalWords {
