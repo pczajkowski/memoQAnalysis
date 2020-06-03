@@ -117,6 +117,7 @@ namespace memoQAnalysis
             using (var sw = new StreamWriter(path, false, OutputEncoding))
             using (var csv = new CsvWriter(sw, configuration))
             {
+                sw.WriteLine(Header);
                 csv.WriteRecords(Data);
             }
         }
