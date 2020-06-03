@@ -14,17 +14,31 @@ namespace memoQAnalysis
         public List<MemoQAnalysis> Data { get; }
         public Encoding OutputEncoding = Encoding.Unicode;
 
-        private readonly string _delimiter;
+        private const string HeaderComma = ",,X-translated,,,,,,,,101%,,,,,,,,Repetitions,,,,,,,,100%,,,,,,,,95% - 99%,,,,,,,,85% - 94%,,,,,,,,75% - 84%,,,,,,,,50% - 74%,,,,,,,,No match,,,,,,,,Fragments,,,,,,,,Total,,,,,,,,";
+        private const string HeaderSemicolon =
+            ";;X-translated;;;;;;;;101%;;;;;;;;Repetitions;;;;;;;;100%;;;;;;;;95% - 99%;;;;;;;;85% - 94%;;;;;;;;75% - 84%;;;;;;;;50% - 74%;;;;;;;;No match;;;;;;;;Fragments;;;;;;;;Total;;;;;;;;";
+        public string Delimiter;
+
+        public string Header
+        {
+            get
+            {
+                if (Delimiter.Equals(",")) return HeaderComma;
+                if (Delimiter.Equals(";")) return HeaderSemicolon;
+
+                return HeaderComma.Replace(",", Delimiter);
+            }
+        }
 
         public Analysis(string path, string delimiter = ",")
         {
-            _delimiter = delimiter;
+            Delimiter = delimiter;
             Data = ReadFromFile(path);
         }
 
         public Analysis(byte[] data, string delimiter = ";")
         {
-            _delimiter = delimiter;
+            Delimiter = delimiter;
             Data = ReadData(data);
         }
 
@@ -40,7 +54,7 @@ namespace memoQAnalysis
         {
             var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                Delimiter = _delimiter
+                Delimiter = Delimiter
             };
 
             using (var csv = new CsvReader(streamReader, configuration))
@@ -96,7 +110,7 @@ namespace memoQAnalysis
         {
             var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                Delimiter = _delimiter
+                Delimiter = Delimiter
             };
             configuration.RegisterClassMap<MemoQAnalysisMapping>();
 

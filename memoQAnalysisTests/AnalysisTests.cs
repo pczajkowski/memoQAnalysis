@@ -45,7 +45,7 @@ namespace memoQAnalysisTests
             var test = new Analysis(MainTestFile);
             Assert.Equal(601, test.WordsToTranslateWithRepetitions());
         }
-        
+
         [Fact]
         public void ReadAnalysisFromBytes()
         {
@@ -191,6 +191,24 @@ namespace memoQAnalysisTests
             Assert.Equal(originalFirstFile.NinentyFiveNineWords, readFirstFile.NinentyFiveNineWords);
 
             File.Delete(path);
+        }
+
+        [Fact]
+        public void TestHeader()
+        {
+            const string headerComma = ",,X-translated,,,,,,,,101%,,,,,,,,Repetitions,,,,,,,,100%,,,,,,,,95% - 99%,,,,,,,,85% - 94%,,,,,,,,75% - 84%,,,,,,,,50% - 74%,,,,,,,,No match,,,,,,,,Fragments,,,,,,,,Total,,,,,,,,";
+            const string headerSemicolon = ";;X-translated;;;;;;;;101%;;;;;;;;Repetitions;;;;;;;;100%;;;;;;;;95% - 99%;;;;;;;;85% - 94%;;;;;;;;75% - 84%;;;;;;;;50% - 74%;;;;;;;;No match;;;;;;;;Fragments;;;;;;;;Total;;;;;;;;";
+            const string headerTab =
+            @"		X-translated								101%								Repetitions								100%								95% - 99%								85% - 94%								75% - 84%								50% - 74%								No match								Fragments								Total								";
+
+            var test = new Analysis(MainTestFile);
+            Assert.Equal(headerComma, test.Header);
+
+            test.Delimiter = ";";
+            Assert.Equal(headerSemicolon, test.Header);
+
+            test.Delimiter = "\t";
+            Assert.Equal(headerTab, test.Header);
         }
     }
 }
